@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void Output(int n)
+{
+	if (n < 1) return;
+
+	Output(n - 1);
+
+	cout << n << "\n";
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int n;
+	cin >> n;
+
+	Output(n);
+}
