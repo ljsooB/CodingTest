@@ -1,19 +1,21 @@
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int solution(vector<vector<int>> sizes) {
     int answer = 0;
     
-    int width = 0;
-    int height = 0;
+    int w = 0, h = 0;
     
-    for (int i = 0; i< sizes.size(); i++)
+    for (int i = 0; i < sizes.size(); i++)
     {
-        width = max(width, max(sizes[i][0], sizes[i][1]));
-        height = max(height, min(sizes[i][0], sizes[i][1]));
+        w = max(w, max(sizes[i][0], sizes[i][1]));
+        h = max(h, min(sizes[i][0], sizes[i][1]));
     }
-    answer = width * height;
+
+    answer = w * h;
+    
     return answer;
 }
