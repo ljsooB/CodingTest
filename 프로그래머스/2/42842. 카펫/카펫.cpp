@@ -1,27 +1,26 @@
 #include <string>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
 vector<int> solution(int brown, int yellow) {
     vector<int> answer;
     
-    int area = brown + yellow;
-    
-    for (int height = 3; height <= area / 3; height++)
-    {
-        if (area % height != 0) continue;
+    int width, height;
+    for(width=1;width<=yellow;width++) {
+        if(yellow % width != 0) continue;
+        height = yellow / width;
+        cout<<"["<<width<<"]" << "[" <<height<<"]"<<endl;
         
-        int width = area / height;
+        int fBrown = height*2 + width*2 + 4;
+        cout<<fBrown<<endl;
+        if(brown == fBrown) break;
         
-        if ((width - 2) * (height - 2) == yellow)
-        {
-            answer.push_back(width);
-            answer.push_back(height);
-            return answer;
-        }
     }
     
+    answer.push_back(height+2);
+    answer.push_back(width+2);
     
     return answer;
 }
