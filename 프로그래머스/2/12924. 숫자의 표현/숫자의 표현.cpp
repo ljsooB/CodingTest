@@ -1,30 +1,33 @@
 #include <string>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
 int solution(int n) {
-    
     int answer = 0;
+    int sum = 0;
+    queue<int> q;
     
-    for(int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        int temp = i;
-        for (int j = i + 1; j <= n + 1; j++)
+        sum+= i;
+        q.push(i);
+        
+        if(sum > n) 
         {
-            if (temp + j <= n)
+            while(sum > n) 
             {
-                temp+=j;
+                sum -= q.front();
+                q.pop();
             }
-            else if (temp == n)
-            {
-                answer++;
-                break;
-            }
-            else
-            {
-                break;
-            }
+        }
+
+        if(sum == n) 
+        {
+            answer++;
+            sum -= q.front();
+            q.pop();
         }
     }
     
