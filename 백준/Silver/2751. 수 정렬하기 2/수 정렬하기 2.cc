@@ -4,27 +4,25 @@
 
 using namespace std;
 
-int main()
-{
-	int N;
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-	cin >> N;
+    int N;
+    cin >> N;
 
-	vector<int> v;
-	
-	for (int i = 0; i < N; i++)
-	{
-		int t;
+    vector<int> v;
+    v.reserve(N); // (선택) 재할당 줄이기
 
-		cin >> t;
+    for (int i = 0; i < N; i++) {
+        int t;
+        cin >> t;
+        v.push_back(t);
+    }
 
-		v.push_back(t);
-	}
+    sort(v.begin(), v.end());
 
-	sort(v.begin(), v.end());
-
-	for (size_t i = 0; i < v.size(); i++)
-	{
-		cout << v[i] << "\n";
-	}
+    for (int x : v) {
+        cout << x << '\n'; // endl 금지
+    }
 }
